@@ -27,7 +27,12 @@ public class Recordatorio {
     @JoinColumn(name = "nota_id")
     private Nota nota;
 
-    public void crearRecordatorio() {}
-    public void editarRecordatorio() {}
-    public void desactivarRecordatorio() {}
+    public void crearRecordatorio() {
+    }
+
+    public void editarRecordatorio() {
+    }
+
+    public void desactivarRecordatorio() {
+    }
 }

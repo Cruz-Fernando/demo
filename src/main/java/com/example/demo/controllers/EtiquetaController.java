@@ -13,7 +13,7 @@ import java.util.*;
  * Controlador REST para la entidad Etiqueta.
  * Gestiona operaciones CRUD y consultas personalizadas sobre las etiquetas.
  * 
- * @author 
+ * @author
  * @version 1.0
  */
 @RestController

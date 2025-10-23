@@ -39,8 +39,15 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Carpeta> carpetas;
 
-    public void registrarse() {}
-    public void iniciarSesion() {}
-    public void cerrarSesion() {}
-    public void actualizarPerfil() {}
+    public void registrarse() {
+    }
+
+    public void iniciarSesion() {
+    }
+
+    public void cerrarSesion() {
+    }
+
+    public void actualizarPerfil() {
+    }
 }

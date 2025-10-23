@@ -13,7 +13,7 @@ import java.util.*;
  * Controlador REST para la entidad Nota.
  * Gestiona operaciones CRUD y consultas avanzadas sobre las notas del usuario.
  * 
- * @author 
+ * @author
  * @version 1.0
  */
 @RestController
@@ -95,8 +95,7 @@ public class NotaController {
     public List<Nota> getNotasByFecha(@PathVariable int anio, @PathVariable int mes) {
         return notaRepository.findByFechaCreacionBetween(
                 java.time.LocalDateTime.of(anio, mes, 1, 0, 0),
-                java.time.LocalDateTime.of(anio, mes, 31, 23, 59)
-        );
+                java.time.LocalDateTime.of(anio, mes, 31, 23, 59));
     }
 
     // GET: Obtener estadísticas de notas por color de fondo

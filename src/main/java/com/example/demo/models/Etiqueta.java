@@ -25,7 +25,12 @@ public class Etiqueta {
     @ManyToMany(mappedBy = "etiquetas")
     private List<Nota> notas;
 
-    public void crearEtiqueta() {}
-    public void editarEtiqueta() {}
-    public void eliminarEtiqueta() {}
+    public void crearEtiqueta() {
+    }
+
+    public void editarEtiqueta() {
+    }
+
+    public void eliminarEtiqueta() {
+    }
 }

@@ -36,11 +36,7 @@ public class Nota {
     private Carpeta carpeta;
 
     @ManyToMany
-    @JoinTable(
-        name = "nota_etiquetas",
-        joinColumns = @JoinColumn(name = "nota_id"),
-        inverseJoinColumns = @JoinColumn(name = "etiqueta_id")
-    )
+    @JoinTable(name = "nota_etiquetas", joinColumns = @JoinColumn(name = "nota_id"), inverseJoinColumns = @JoinColumn(name = "etiqueta_id"))
     private List<Etiqueta> etiquetas;
 
     @OneToMany(mappedBy = "nota", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -49,10 +45,21 @@ public class Nota {
     @OneToMany(mappedBy = "nota", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recordatorio> recordatorios;
 
-    public void crearNota() {}
-    public void editarNota() {}
-    public void eliminarNota() {}
-    public void cambiarColor() {}
-    public void compartirNota() {}
-    public void archivarNota() {}
+    public void crearNota() {
+    }
+
+    public void editarNota() {
+    }
+
+    public void eliminarNota() {
+    }
+
+    public void cambiarColor() {
+    }
+
+    public void compartirNota() {
+    }
+
+    public void archivarNota() {
+    }
 }

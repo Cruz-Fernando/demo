@@ -30,6 +30,9 @@ public class Perfil {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public void editarPerfil() {}
-    public void verPerfil() {}
+    public void editarPerfil() {
+    }
+
+    public void verPerfil() {
+    }
 }

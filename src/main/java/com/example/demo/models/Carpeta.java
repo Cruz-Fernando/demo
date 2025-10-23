@@ -34,8 +34,15 @@ public class Carpeta {
     @OneToMany(mappedBy = "carpeta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Nota> notas;
 
-    public void crearCarpeta() {}
-    public void editarCarpeta() {}
-    public void eliminarCarpeta() {}
-    public void moverNotas() {}
+    public void crearCarpeta() {
+    }
+
+    public void editarCarpeta() {
+    }
+
+    public void eliminarCarpeta() {
+    }
+
+    public void moverNotas() {
+    }
 }

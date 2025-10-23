@@ -30,7 +30,12 @@ public class Multimedia {
     @JoinColumn(name = "nota_id")
     private Nota nota;
 
-    public void subirArchivo() {}
-    public void eliminarArchivo() {}
-    public void descargarArchivo() {}
+    public void subirArchivo() {
+    }
+
+    public void eliminarArchivo() {
+    }
+
+    public void descargarArchivo() {
+    }
 }

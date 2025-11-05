@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">TaskFlow | Notas en Línea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <header>
+        <div class="logo">🔥 TaskFlow</div>
+        <nav>
+            <a th:href="@{/web/}">Inicio</a>
+            <a th:href="@{/web/notas}">Notas</a>
+            <a th:href="@{/web/carpetas}">Carpetas</a>
+            <a th:href="@{/web/etiquetas}">Etiquetas</a>
+            <a th:href="@{/web/multimedia}">Multimedia</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1><span>TaskFlow</span><br>Notas en Línea</h1>
+            <div class="linea"></div>
+            <p>
+                La productividad se escribe con color, pasión y estructura.  
+                Crea, organiza y revive tus ideas — <strong>todo en un solo flujo.</strong>
+            </p>
+            <div class="botones">
+                <a th:href="@{/web/notas}" class="btn btn-primario">Explorar Notas</a>
+                <a th:href="@{/web/etiquetas}" class="btn btn-secundario">Mis Etiquetas</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
+    </footer>
+</body>
+</html>

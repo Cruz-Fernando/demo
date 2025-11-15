@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tituloPagina}">Crear Nota | TaskFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <header>
+        <div class="logo">🔥 TaskFlow</div>
+        <nav>
+            <a th:href="@{/web/}">Inicio</a>
+            <a class="active" th:href="@{/web/notas}">Notas</a>
+            <a th:href="@{/web/carpetas}">Carpetas</a>
+            <a th:href="@{/web/etiquetas}">Etiquetas</a>
+            <a th:href="@{/web/multimedia}">Multimedia</a>
+        </nav>
+    </header>
+
+    <main class="form-nota-container">
+        <section class="form-nota">
+            <h1 th:text="${tituloPagina}">Nueva Nota</h1>
+
+            <form th:action="@{${accion}}" th:object="${nota}" method="post">
+                <div class="campo">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" th:field="*{titulo}" placeholder="Escribe el título de tu nota" required>
+                </div>
+
+                <div class="campo">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" th:field="*{descripcion}" rows="6" placeholder="Agrega aquí el contenido de tu nota..." required></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="fechaCreacion">Fecha</label>
+                    <input type="datetime-local" id="fechaCreacion" th:field="*{fechaCreacion}">
+                </div>
+
+                <div class="botones-form">
+                    <button type="submit" class="btn btn-primario">💾 Guardar</button>
+                    <a th:href="@{/web/notas}" class="btn btn-secundario">⬅ Volver</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
+    </footer>
+</body>
+</html>

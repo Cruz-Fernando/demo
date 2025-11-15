@@ -26,18 +26,24 @@ body {
 /* Fondo animado */
 .background {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(255,0,0,0.3), transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(255,80,80,0.2), transparent 70%);
+    background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 80, 80, 0.2), transparent 70%);
     animation: pulse 8s infinite alternate;
     z-index: -1;
 }
 
 @keyframes pulse {
-    0% { filter: brightness(0.9) blur(0px); }
-    100% { filter: brightness(1.2) blur(3px); }
+    0% {
+        filter: brightness(0.9) blur(0px);
+    }
+
+    100% {
+        filter: brightness(1.2) blur(3px);
+    }
 }
 
 /* Header */
@@ -205,6 +211,7 @@ footer {
         font-size: 2rem;
     }
 }
+
 @media (max-width: 480px) {
     nav a {
         margin: 0 10px;
@@ -221,3 +228,186 @@ footer {
         text-align: center;
     }
 }
+
+
+/* ==== NOTAS ==== */
+
+
+.main-notas {
+    padding: 80px 10%;
+    color: var(--blanco);
+}
+
+.titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.titulo-seccion h1 {
+    font-size: 2.2rem;
+    color: var(--rojo-ligero);
+    text-shadow: 0 0 10px rgba(255, 70, 70, 0.4);
+}
+
+.contenedor-notas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.nota-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nota-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(255, 50, 50, 0.3);
+}
+
+.nota-card h2 {
+    color: var(--rojo-ligero);
+    margin-bottom: 10px;
+}
+
+.nota-card p {
+    color: var(--gris);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.acciones-nota {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-accion {
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-accion.editar {
+    background: var(--rojo-ligero);
+    color: var(--blanco);
+}
+
+.btn-accion.eliminar {
+    border: 2px solid var(--rojo-acento);
+    color: var(--rojo-acento);
+    background: transparent;
+}
+
+.btn-accion.eliminar:hover {
+    background: var(--rojo-acento);
+    color: var(--blanco);
+}
+
+.no-notas {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-size: 1.1rem;
+    color: var(--gris);
+}
+
+/* Responsividad notas */
+@media (max-width: 600px) {
+    .contenedor-notas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==== FIN NOTAS ==== */
+
+/* ==== FORMULARIO DE NOTA ==== */
+
+
+.form-nota-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    min-height: 80vh;
+}
+
+.form-nota {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+}
+
+.form-nota h1 {
+    text-align: center;
+    color: var(--rojo-ligero);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 100, 100, 0.4);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.campo label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--blanco);
+}
+
+.campo input,
+.campo textarea {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: var(--blanco);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: var(--rojo-ligero);
+    box-shadow: 0 0 10px rgba(255, 70, 70, 0.4);
+}
+
+.botones-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botones-form .btn {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+    .botones-form {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+    .botones-form .btn {
+        margin: 0;
+    }
+
+
+/* ==== FIN FORMULARIO DE NOTA ==== */
+

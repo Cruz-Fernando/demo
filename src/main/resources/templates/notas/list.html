@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Listado de Notas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas | TaskFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Notas registradas</h1>
-    <p th:text="'Aquí aparecerán las notas del sistema.'"></p>
+    <div class="background"></div>
+
+    <header>
+        <div class="logo">🔥 TaskFlow</div>
+        <nav>
+            <a th:href="@{/web/}">Inicio</a>
+            <a class="active" th:href="@{/web/notas}">Notas</a>
+            <a th:href="@{/web/carpetas}">Carpetas</a>
+            <a th:href="@{/web/etiquetas}">Etiquetas</a>
+            <a th:href="@{/web/multimedia}">Multimedia</a>
+        </nav>
+    </header>
+
+    <main class="main-notas">
+        <div class="titulo-seccion">
+            <h1>Mis Notas</h1>
+            <a th:href="@{/web/notas/nueva}" class="btn btn-primario">+ Nueva Nota</a>
+        </div>
+
+        <div class="contenedor-notas">
+            <div class="nota-card" th:each="nota : ${notas}">
+                <h2 th:text="${nota.titulo}">Título de la nota</h2>
+                <p th:text="${nota.descripcion}">Aquí va el contenido de la nota...</p>
+
+                <div class="acciones-nota">
+                    <a th:href="@{|/web/notas/editar/${nota.id}|}" class="btn-accion editar">✏️ Editar</a>
+                    <a th:href="@{|/web/notas/eliminar/${nota.id}|}" class="btn-accion eliminar"
+                        onclick="return confirm('¿Seguro que deseas eliminar esta nota? 🗑️')">🗑️ Eliminar</a>
+                </div>
+            </div>
+
+            <div th:if="${#lists.isEmpty(notas)}" class="no-notas">
+                <p>Aún no tienes notas guardadas... 🌙<br>
+                    <a th:href='@{/web/notas/nueva}' class="btn btn-secundario">Crea tu primera nota</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
+    </footer>
 </body>
+
 </html>

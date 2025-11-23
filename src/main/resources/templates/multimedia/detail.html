@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Detalle Multimedia | TaskFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <header>
+        <div class="logo">🔥 TaskFlow</div>
+        <nav>
+            <a th:href="@{/web/}">Inicio</a>
+            <a th:href="@{/web/notas}">Notas</a>
+            <a th:href="@{/web/carpetas}">Carpetas</a>
+            <a th:href="@{/web/etiquetas}">Etiquetas</a>
+            <a class="active" th:href="@{/web/multimedia}">Multimedia</a>
+        </nav>
+    </header>
+
+    <main class="form-nota-container">
+        <section class="form-nota" style="text-align: center;">
+            <h1 th:text="${archivo.nombreArchivo}">Nombre del Archivo</h1>
+
+            <div style="margin: 20px 0;">
+                <img th:if="${#strings.contains(archivo.tipoArchivo, 'image')}" th:src="@{${archivo.urlArchivo}}"
+                    alt="Vista previa" style="max-width: 100%; border-radius: 10px;">
+                <video th:if="${#strings.contains(archivo.tipoArchivo, 'video')}" controls
+                    style="max-width: 100%; border-radius: 10px;">
+                    <source th:src="@{${archivo.urlArchivo}}" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+                <div
+                    th:unless="${#strings.contains(archivo.tipoArchivo, 'image') or #strings.contains(archivo.tipoArchivo, 'video')}">
+                    <p>Vista previa no disponible para este tipo de archivo.</p>
+                </div>
+            </div>
+
+            <p><strong>Tipo:</strong> <span th:text="${archivo.tipoArchivo}"></span></p>
+            <p><strong>Tamaño:</strong> <span th:text="${archivo.tamaño} + ' MB'"></span></p>
+            <p><strong>Subido el:</strong> <span
+                    th:text="${#temporals.format(archivo.fechaSubida, 'dd/MM/yyyy HH:mm')}"></span></p>
+
+            <div class="botones-form" style="margin-top: 30px;">
+                <a th:href="@{/web/multimedia}" class="btn btn-secundario">⬅ Volver</a>
+                <a th:href="@{${archivo.urlArchivo}}" download class="btn btn-primario">⬇ Descargar</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
+    </footer>
+</body>
+
+</html>

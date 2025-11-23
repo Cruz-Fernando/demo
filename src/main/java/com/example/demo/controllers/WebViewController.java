@@ -13,18 +13,23 @@ import java.util.List;
  * Controlador Web MVC para gestionar vistas con Thymeleaf.
  * Permite navegar entre las páginas de notas, carpetas, etiquetas, etc.
  * 
- * @author 
+ * @author
  * @version 1.0
  */
 @Controller
 @RequestMapping("/web")
 public class WebViewController {
 
-    @Autowired private NotaRepository notaRepository;
-    @Autowired private CarpetaRepository carpetaRepository;
-    @Autowired private EtiquetaRepository etiquetaRepository;
-    @Autowired private MultimediaRepository multimediaRepository;
-    @Autowired private UsuarioRepository usuarioRepository;
+    @Autowired
+    private NotaRepository notaRepository;
+    @Autowired
+    private CarpetaRepository carpetaRepository;
+    @Autowired
+    private EtiquetaRepository etiquetaRepository;
+    @Autowired
+    private MultimediaRepository multimediaRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     /**
      * Página principal (home del sistema)
@@ -48,7 +53,8 @@ public class WebViewController {
     @GetMapping("/notas/{id}")
     public String detalleNota(@PathVariable Integer id, Model model) {
         Nota nota = notaRepository.findById(id).orElse(null);
-        if (nota == null) return "redirect:/web/notas";
+        if (nota == null)
+            return "redirect:/web/notas";
         model.addAttribute("nota", nota);
         model.addAttribute("pageTitle", "Detalle de Nota");
         return "notas/detail";
@@ -68,7 +74,8 @@ public class WebViewController {
     @GetMapping("/notas/{id}/editar")
     public String editarNota(@PathVariable Integer id, Model model) {
         Nota nota = notaRepository.findById(id).orElse(null);
-        if (nota == null) return "redirect:/web/notas";
+        if (nota == null)
+            return "redirect:/web/notas";
         List<Etiqueta> etiquetas = etiquetaRepository.findAll();
         model.addAttribute("nota", nota);
         model.addAttribute("etiquetas", etiquetas);
@@ -88,7 +95,8 @@ public class WebViewController {
     @GetMapping("/carpetas/{id}")
     public String detalleCarpeta(@PathVariable Integer id, Model model) {
         Carpeta carpeta = carpetaRepository.findById(id).orElse(null);
-        if (carpeta == null) return "redirect:/web/carpetas";
+        if (carpeta == null)
+            return "redirect:/web/carpetas";
         model.addAttribute("carpeta", carpeta);
         model.addAttribute("pageTitle", "Detalle de Carpeta");
         return "carpetas/detail";
@@ -104,13 +112,15 @@ public class WebViewController {
     @GetMapping("/carpetas/{id}/editar")
     public String editarCarpeta(@PathVariable Integer id, Model model) {
         Carpeta carpeta = carpetaRepository.findById(id).orElse(null);
-        if (carpeta == null) return "redirect:/web/carpetas";
+        if (carpeta == null)
+            return "redirect:/web/carpetas";
         model.addAttribute("carpeta", carpeta);
         model.addAttribute("pageTitle", "Editar Carpeta");
         return "carpetas/form";
     }
 
     // Etiquetas
+    @GetMapping("/etiquetas")
     public String listarEtiquetas(Model model) {
         List<Etiqueta> etiquetas = etiquetaRepository.findAll();
         model.addAttribute("etiquetas", etiquetas);
@@ -128,7 +138,8 @@ public class WebViewController {
     @GetMapping("/etiquetas/{id}/editar")
     public String editarEtiqueta(@PathVariable Integer id, Model model) {
         Etiqueta etiqueta = etiquetaRepository.findById(id).orElse(null);
-        if (etiqueta == null) return "redirect:/web/etiquetas";
+        if (etiqueta == null)
+            return "redirect:/web/etiquetas";
         model.addAttribute("etiqueta", etiqueta);
         model.addAttribute("pageTitle", "Editar Etiqueta");
         return "etiquetas/form";
@@ -146,7 +157,8 @@ public class WebViewController {
     @GetMapping("/multimedia/{id}")
     public String detalleMultimedia(@PathVariable Integer id, Model model) {
         Multimedia archivo = multimediaRepository.findById(id).orElse(null);
-        if (archivo == null) return "redirect:/web/multimedia";
+        if (archivo == null)
+            return "redirect:/web/multimedia";
         model.addAttribute("archivo", archivo);
         model.addAttribute("pageTitle", "Detalle del Archivo");
         return "multimedia/detail";
@@ -164,7 +176,8 @@ public class WebViewController {
     @GetMapping("/usuarios/{id}")
     public String detalleUsuario(@PathVariable Integer id, Model model) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario == null) return "redirect:/web/usuarios";
+        if (usuario == null)
+            return "redirect:/web/usuarios";
         model.addAttribute("usuario", usuario);
         model.addAttribute("pageTitle", "Perfil de Usuario");
         return "usuarios/detail";

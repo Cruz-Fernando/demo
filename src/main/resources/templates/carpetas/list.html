@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpetas | TaskFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <header>
+        <div class="logo">🔥 TaskFlow</div>
+        <nav>
+            <a th:href="@{/web/}">Inicio</a>
+            <a th:href="@{/web/notas}">Notas</a>
+            <a class="active" th:href="@{/web/carpetas}">Carpetas</a>
+            <a th:href="@{/web/etiquetas}">Etiquetas</a>
+            <a th:href="@{/web/multimedia}">Multimedia</a>
+        </nav>
+    </header>
+
+    <main class="main-notas">
+        <div class="titulo-seccion">
+            <h1>Mis Carpetas</h1>
+            <a th:href="@{/web/carpetas/nueva}" class="btn btn-primario">+ Nueva Carpeta</a>
+        </div>
+
+        <div class="contenedor-notas">
+            <div class="nota-card" th:each="carpeta : ${carpetas}"
+                th:style="'border-left: 5px solid ' + ${carpeta.color}">
+                <h2 th:text="${carpeta.nombre}">Nombre de la carpeta</h2>
+                <p th:text="${carpeta.descripcion}">Descripción de la carpeta...</p>
+                <small th:text="${#temporals.format(carpeta.fechaCreacion, 'dd/MM/yyyy HH:mm')}">Fecha</small>
+
+                <div class="acciones-nota" style="margin-top: 15px;">
+                    <a th:href="@{|/web/carpetas/${carpeta.id}/editar|}" class="btn-accion editar">✏️ Editar</a>
+                    <a th:href="@{|/web/carpetas/${carpeta.id}|}" class="btn-accion eliminar">📂 Ver</a>
+                </div>
+            </div>
+
+            <div th:if="${#lists.isEmpty(carpetas)}" class="no-notas">
+                <p>No tienes carpetas creadas... 📂<br>
+                    <a th:href='@{/web/carpetas/nueva}' class="btn btn-secundario">Crea tu primera carpeta</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
+    </footer>
+</body>
+
+</html>

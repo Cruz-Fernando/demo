@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,12 +30,14 @@
             <form th:action="@{${accion}}" th:object="${nota}" method="post">
                 <div class="campo">
                     <label for="titulo">Título</label>
-                    <input type="text" id="titulo" th:field="*{titulo}" placeholder="Escribe el título de tu nota" required>
+                    <input type="text" id="titulo" th:field="*{titulo}" placeholder="Escribe el título de tu nota"
+                        required>
                 </div>
 
                 <div class="campo">
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" th:field="*{descripcion}" rows="6" placeholder="Agrega aquí el contenido de tu nota..." required></textarea>
+                    <label for="contenido">Contenido</label>
+                    <textarea id="contenido" th:field="*{contenido}" rows="6"
+                        placeholder="Agrega aquí el contenido de tu nota..." required></textarea>
                 </div>
 
                 <div class="campo">
@@ -54,4 +57,5 @@
         © 2025 TaskFlow — Notas en Línea | Diseñado por <strong>Jhojan Cruz</strong>
     </footer>
 </body>
+
 </html>

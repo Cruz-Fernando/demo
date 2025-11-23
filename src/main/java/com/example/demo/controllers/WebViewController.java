@@ -68,7 +68,16 @@ public class WebViewController {
         model.addAttribute("etiquetas", etiquetas);
         model.addAttribute("carpetas", carpetas);
         model.addAttribute("pageTitle", "Crear Nueva Nota");
+        model.addAttribute("accion", "/web/notas/guardar");
         return "notas/form";
+    }
+
+    @PostMapping("/notas/guardar")
+    public String guardarNota(@ModelAttribute Nota nota) {
+        nota.setFechaCreacion(java.time.LocalDateTime.now());
+        nota.setFechaModificacion(java.time.LocalDateTime.now());
+        notaRepository.save(nota);
+        return "redirect:/web/notas";
     }
 
     @GetMapping("/notas/{id}/editar")
@@ -80,6 +89,7 @@ public class WebViewController {
         model.addAttribute("nota", nota);
         model.addAttribute("etiquetas", etiquetas);
         model.addAttribute("pageTitle", "Editar Nota");
+        model.addAttribute("accion", "/web/notas/guardar");
         return "notas/form";
     }
 
@@ -109,6 +119,12 @@ public class WebViewController {
         return "carpetas/form";
     }
 
+    @PostMapping("/carpetas/guardar")
+    public String guardarCarpeta(@ModelAttribute Carpeta carpeta) {
+        carpetaRepository.save(carpeta);
+        return "redirect:/web/carpetas";
+    }
+
     @GetMapping("/carpetas/{id}/editar")
     public String editarCarpeta(@PathVariable Integer id, Model model) {
         Carpeta carpeta = carpetaRepository.findById(id).orElse(null);
@@ -135,6 +151,12 @@ public class WebViewController {
         return "etiquetas/form";
     }
 
+    @PostMapping("/etiquetas/guardar")
+    public String guardarEtiqueta(@ModelAttribute Etiqueta etiqueta) {
+        etiquetaRepository.save(etiqueta);
+        return "redirect:/web/etiquetas";
+    }
+
     @GetMapping("/etiquetas/{id}/editar")
     public String editarEtiqueta(@PathVariable Integer id, Model model) {
         Etiqueta etiqueta = etiquetaRepository.findById(id).orElse(null);
@@ -152,6 +174,20 @@ public class WebViewController {
         model.addAttribute("archivos", archivos);
         model.addAttribute("pageTitle", "Archivos Multimedia");
         return "multimedia/list";
+    }
+
+    @GetMapping("/multimedia/nuevo")
+    public String nuevoMultimedia(Model model) {
+        model.addAttribute("archivo", new Multimedia());
+        model.addAttribute("pageTitle", "Subir Multimedia");
+        return "multimedia/form";
+    }
+
+    @PostMapping("/multimedia/guardar")
+    public String guardarMultimedia(@ModelAttribute Multimedia archivo) {
+        archivo.setFechaSubida(java.time.LocalDateTime.now());
+        multimediaRepository.save(archivo);
+        return "redirect:/web/multimedia";
     }
 
     @GetMapping("/multimedia/{id}")

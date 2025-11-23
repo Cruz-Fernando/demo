@@ -32,7 +32,7 @@
         <div class="contenedor-notas">
             <div class="nota-card" th:each="nota : ${notas}">
                 <h2 th:text="${nota.titulo}">Título de la nota</h2>
-                <p th:text="${nota.descripcion}">Aquí va el contenido de la nota...</p>
+                <p th:text="${nota.contenido}">Aquí va el contenido de la nota...</p>
 
                 <div class="acciones-nota">
                     <a th:href="@{|/web/notas/editar/${nota.id}|}" class="btn-accion editar">✏️ Editar</a>

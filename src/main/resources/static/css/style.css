@@ -57,6 +57,7 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -201,14 +202,32 @@ footer {
     header {
         flex-direction: column;
         gap: 15px;
+        padding: 15px 20px;
+    }
+
+    main {
+        padding-top: 160px;
+        /* Espacio para el header más alto en móvil */
     }
 
     .hero {
         padding: 35px;
+        margin-top: 20px;
     }
 
     h1 {
         font-size: 2rem;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px 10px;
     }
 }
 
@@ -253,15 +272,15 @@ footer {
 
 .contenedor-notas {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
 }
 
 .nota-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 25px;
+    padding: 30px;
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -278,8 +297,9 @@ footer {
 
 .nota-card p {
     color: var(--gris);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
 .acciones-nota {
@@ -404,10 +424,10 @@ footer {
         gap: 15px;
     }
 }
-    .botones-form .btn {
-        margin: 0;
-    }
+
+.botones-form .btn {
+    margin: 0;
+}
 
 
 /* ==== FIN FORMULARIO DE NOTA ==== */
-

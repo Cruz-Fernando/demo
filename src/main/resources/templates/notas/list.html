@@ -35,7 +35,7 @@
                 <p th:text="${nota.contenido}">Aquí va el contenido de la nota...</p>
 
                 <div class="acciones-nota">
-                    <a th:href="@{|/web/notas/editar/${nota.id}|}" class="btn-accion editar">✏️ Editar</a>
+                    <a th:href="@{|/web/notas/${nota.id}/editar|}" class="btn-accion editar">✏️ Editar</a>
                     <a th:href="@{|/web/notas/eliminar/${nota.id}|}" class="btn-accion eliminar"
                         onclick="return confirm('¿Seguro que deseas eliminar esta nota? 🗑️')">🗑️ Eliminar</a>
                 </div>

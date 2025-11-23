@@ -28,6 +28,7 @@
             <h1 th:text="${tituloPagina}">Nueva Nota</h1>
 
             <form th:action="@{${accion}}" th:object="${nota}" method="post">
+                <input type="hidden" th:field="*{id}" />
                 <div class="campo">
                     <label for="titulo">Título</label>
                     <input type="text" id="titulo" th:field="*{titulo}" placeholder="Escribe el título de tu nota"

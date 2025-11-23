@@ -74,7 +74,14 @@ public class WebViewController {
 
     @PostMapping("/notas/guardar")
     public String guardarNota(@ModelAttribute Nota nota) {
-        nota.setFechaCreacion(java.time.LocalDateTime.now());
+        if (nota.getId() != null) {
+            Nota notaExistente = notaRepository.findById(nota.getId()).orElse(null);
+            if (notaExistente != null) {
+                nota.setFechaCreacion(notaExistente.getFechaCreacion());
+            }
+        } else {
+            nota.setFechaCreacion(java.time.LocalDateTime.now());
+        }
         nota.setFechaModificacion(java.time.LocalDateTime.now());
         notaRepository.save(nota);
         return "redirect:/web/notas";
@@ -91,6 +98,12 @@ public class WebViewController {
         model.addAttribute("pageTitle", "Editar Nota");
         model.addAttribute("accion", "/web/notas/guardar");
         return "notas/form";
+    }
+
+    @GetMapping("/notas/eliminar/{id}")
+    public String eliminarNota(@PathVariable Integer id) {
+        notaRepository.deleteById(id);
+        return "redirect:/web/notas";
     }
 
     // Carpetas
@@ -121,6 +134,15 @@ public class WebViewController {
 
     @PostMapping("/carpetas/guardar")
     public String guardarCarpeta(@ModelAttribute Carpeta carpeta) {
+        if (carpeta.getId() != null) {
+            Carpeta carpetaExistente = carpetaRepository.findById(carpeta.getId()).orElse(null);
+            if (carpetaExistente != null) {
+                carpeta.setFechaCreacion(carpetaExistente.getFechaCreacion());
+            }
+        } else {
+            carpeta.setFechaCreacion(java.time.LocalDateTime.now());
+        }
+        carpeta.setFechaModificacion(java.time.LocalDateTime.now());
         carpetaRepository.save(carpeta);
         return "redirect:/web/carpetas";
     }
@@ -133,6 +155,12 @@ public class WebViewController {
         model.addAttribute("carpeta", carpeta);
         model.addAttribute("pageTitle", "Editar Carpeta");
         return "carpetas/form";
+    }
+
+    @GetMapping("/carpetas/eliminar/{id}")
+    public String eliminarCarpeta(@PathVariable Integer id) {
+        carpetaRepository.deleteById(id);
+        return "redirect:/web/carpetas";
     }
 
     // Etiquetas
@@ -167,6 +195,12 @@ public class WebViewController {
         return "etiquetas/form";
     }
 
+    @GetMapping("/etiquetas/{id}/eliminar")
+    public String eliminarEtiqueta(@PathVariable Integer id) {
+        etiquetaRepository.deleteById(id);
+        return "redirect:/web/etiquetas";
+    }
+
     // Multimedia
     @GetMapping("/multimedia")
     public String listarMultimedia(Model model) {
@@ -185,7 +219,14 @@ public class WebViewController {
 
     @PostMapping("/multimedia/guardar")
     public String guardarMultimedia(@ModelAttribute Multimedia archivo) {
-        archivo.setFechaSubida(java.time.LocalDateTime.now());
+        if (archivo.getId() != null) {
+            Multimedia archivoExistente = multimediaRepository.findById(archivo.getId()).orElse(null);
+            if (archivoExistente != null) {
+                archivo.setFechaSubida(archivoExistente.getFechaSubida());
+            }
+        } else {
+            archivo.setFechaSubida(java.time.LocalDateTime.now());
+        }
         multimediaRepository.save(archivo);
         return "redirect:/web/multimedia";
     }
@@ -198,6 +239,12 @@ public class WebViewController {
         model.addAttribute("archivo", archivo);
         model.addAttribute("pageTitle", "Detalle del Archivo");
         return "multimedia/detail";
+    }
+
+    @GetMapping("/multimedia/{id}/eliminar")
+    public String eliminarMultimedia(@PathVariable Integer id) {
+        multimediaRepository.deleteById(id);
+        return "redirect:/web/multimedia";
     }
 
     // Usuarios
